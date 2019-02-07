@@ -1,5 +1,5 @@
 {
-  "name": "breakable",
+  "name": "jetio",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
