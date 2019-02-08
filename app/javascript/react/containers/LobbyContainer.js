@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import LinkButton from '../components/LinkButton'
-import { Link } from 'react-router';
+import LobbyTile from "../components/LobbyTile"
 
-class WelcomeContainer extends Component {
+class LobbyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      lobbies: []
     }
   }
 
@@ -17,10 +16,10 @@ class WelcomeContainer extends Component {
   render() {
     return(
       <div>
-        <p>Hello from WelcomeContainer</p>
+        <p>Hello from LobbyContainer</p>
       </div>
     )
   }
 }
 
-export default WelcomeContainer
+export default LobbyContainer
