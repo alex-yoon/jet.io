@@ -15,8 +15,8 @@ class LobbyContainer extends Component {
 
   render() {
     return(
-      <div>
-        <p>Hello from LobbyContainer</p>
+      <div className="panel">
+        
       </div>
     )
   }
