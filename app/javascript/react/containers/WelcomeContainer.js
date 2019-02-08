@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LinkButton from '../components/LinkButton'
 import { Link } from 'react-router';
+import LobbyContainer from './LobbyContainer'
 
 class WelcomeContainer extends Component {
   constructor(props) {
@@ -17,7 +17,17 @@ class WelcomeContainer extends Component {
   render() {
     return(
       <div>
-        <p>Hello from WelcomeContainer</p>
+        <div className="row">
+          <div className="small-4 columns">
+            <LobbyContainer />
+          </div>
+          <div className="small-4 columns">
+            B
+          </div>
+          <div className="small-4 columns">
+            C
+          </div>
+        </div>
       </div>
     )
   }
