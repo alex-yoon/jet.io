@@ -1,0 +1,11 @@
+.gui {
+  z-index: 1;
+}
+
+.object {
+  position: absolute;
+}
+
+.player {
+  @extend .object
+}
