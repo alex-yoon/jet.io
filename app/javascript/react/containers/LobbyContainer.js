@@ -10,13 +10,24 @@ class LobbyContainer extends Component {
   }
 
   componentDidMount() {
-
+    
   }
 
   render() {
+    let lobbyTiles = this.state.lobbies.map((lobby, index) => {
+      <div key={index}>
+        <LobbyTile
+          lobbyId={lobby.id}
+          name={lobby.name}
+          population={lobby.population}
+        />
+      </div>
+    })
+
     return(
       <div className="panel">
-        
+        <h1>Open Lobbies</h1>
+        {lobbyTiles}
       </div>
     )
   }

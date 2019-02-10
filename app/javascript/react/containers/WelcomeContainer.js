@@ -19,13 +19,13 @@ class WelcomeContainer extends Component {
       <div>
         <div className="row">
           <div className="small-4 columns">
-            <LobbyContainer />
+            A
           </div>
           <div className="small-4 columns">
             B
           </div>
           <div className="small-4 columns">
-            C
+            <LobbyContainer />
           </div>
         </div>
       </div>
