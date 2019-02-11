@@ -10,7 +10,18 @@ class LobbyContainer extends Component {
   }
 
   componentDidMount() {
-    
+    fetch('/api/v1/lobbies', {
+      method: "GET"
+    })
+      .then((response) => response.json())
+      .then((lobbyList) => {
+        this.setState({ lobbies: lobbyList })
+        console.log(lobbyList);
+      })
+      .catch((e) => {
+        console.error(`Failed to get list of lobbies: ${error.message}`)
+        this.setState({ lobbies: null })
+      })
   }
 
   render() {
