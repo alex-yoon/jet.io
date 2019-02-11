@@ -1,6 +1,6 @@
 [![Build Status](https://app.codeship.com/projects/c9c3f060-0d5a-0137-45a6-76f49fd9b84a/status?branch=master)](https://app.codeship.com/projects/326708)
 
-# jet.io
+# kite.io
 
 Simple multiplayer shooting game.
 
