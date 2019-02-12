@@ -7,4 +7,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
+  factory :lobby do
+    sequence(:name) {|n| "Lobby #{n}"}
+  end
 end
