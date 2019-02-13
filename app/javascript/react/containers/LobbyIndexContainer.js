@@ -17,7 +17,7 @@ class LobbyIndexContainer extends Component {
       .then((lobbyList) => {
         this.setState({ lobbies: lobbyList })
       })
-      .catch((e) => {
+      .catch((error) => {
         console.error(`Failed to get list of lobbies: ${error.message}`)
         this.setState({ lobbies: null })
       })
@@ -30,17 +30,23 @@ class LobbyIndexContainer extends Component {
       )
     }
     else {
-      let lobbyTiles = this.state.lobbies.map((lobby, index) => {
-        return(
-          <div key={index}>
-            <LobbyTile
-              lobbyId={lobby.id}
-              name={lobby.name}
-              population={lobby.population}
-            />
-          </div>
-        )
-      })
+      let lobbyTiles;
+      if (this.state.lobbies == null) {
+        lobbyTiles = <p className="error-msg">Could not load lobbies at this time.</p>
+      }
+      else {
+        lobbyTiles = this.state.lobbies.map((lobby, index) => {
+          return(
+            <div key={index}>
+              <LobbyTile
+                lobbyId={lobby.id}
+                name={lobby.name}
+                population={lobby.population}
+              />
+            </div>
+          )
+        })
+      }
 
       return(
         <div className="panel">
