@@ -86,7 +86,6 @@ class ChatContainer extends Component {
             {messages}
           </div>
           <ChatInput
-            user={this.state.my_user}
             content={this.state.my_message}
             onChange={this.handleMessageChange}
             onSubmit={this.handleMessageSubmit}

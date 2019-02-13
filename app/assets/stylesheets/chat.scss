@@ -1,5 +1,16 @@
 @import '_colors';
 
+.chat-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chat-input input {
+  display: flex;
+  margin: 0px 8px;
+}
+
 .messages {
   background-color: $foam;
   padding: 8px;
@@ -8,4 +19,8 @@
 
 .message {
   margin-bottom: 2px;
+}
+
+#chat-button {
+  padding: 10px;
 }
