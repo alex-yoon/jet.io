@@ -3,7 +3,9 @@ import React from 'react';
 const Message = (props) => {
   return(
     <p class="message">
-      <strong style={`color:${props.user.color}`}>{props.user.name}:</strong>{props.body}
+      <strong style={`color:${props.author.color}`}>{props.author.name}:</strong>{props.body}
     </p>
   )
 }
+
+export default Message

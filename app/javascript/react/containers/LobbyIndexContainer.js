@@ -24,37 +24,41 @@ class LobbyIndexContainer extends Component {
   }
 
   render() {
-    if (this.state.lobbies == []) {
-      return(
-        <div>Loading</div>
-      )
-    }
-    else {
-      let lobbyTiles;
-      if (this.state.lobbies == null) {
-        lobbyTiles = <p className="error-msg">Could not load lobbies at this time.</p>
-      }
-      else {
-        lobbyTiles = this.state.lobbies.map((lobby, index) => {
-          return(
-            <div key={index}>
-              <LobbyTile
-                lobbyId={lobby.id}
-                name={lobby.name}
-                population={lobby.population}
-              />
-            </div>
-          )
-        })
-      }
-
-      return(
-        <div className="panel">
-          <h4>Open Lobbies</h4>
-          {lobbyTiles}
+    let lobbyTiles;
+    if (this.state.lobbies == null) {
+      lobbyTiles = (
+        <div>
+          <p className="error-msg">Could not load lobbies at this time.</p>
         </div>
       )
     }
+    else if (this.state.lobbies.length == 0) {
+      lobbyTiles = (
+        <div>
+          <p>Loading...</p>
+        </div>
+      )
+    }
+    else {
+      lobbyTiles = this.state.lobbies.map((lobby, index) => {
+        return(
+          <div key={index}>
+            <LobbyTile
+              lobbyId={lobby.id}
+              name={lobby.name}
+              population={lobby.population}
+            />
+          </div>
+        )
+      })
+    }
+
+    return(
+      <div className="panel">
+        <h4>Open Lobbies</h4>
+        {lobbyTiles}
+      </div>
+    )
   }
 }
 

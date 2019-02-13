@@ -4,8 +4,11 @@ const ChatInput = (props) => {
   return(
     <div className="chat-input">
       <form onSubmit={props.onSubmit}>
+        <div>
+          <strong style={`color:${props.user.color}`}>{props.user.name}</strong>
+        </div>
         <input
-          name={props.name}
+          name="body"
           onChange={props.onChange}
           type="text"
           value={props.content}
@@ -19,3 +22,5 @@ const ChatInput = (props) => {
     </div>
   )
 }
+
+export default ChatInput
