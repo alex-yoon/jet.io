@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Message from "../components/Message"
 import ChatInput from "../components/ChatInput"
 
 class ChatContainer extends Component {
@@ -10,10 +11,11 @@ class ChatContainer extends Component {
       my_user: {},
       my_message: ""
     }
+    this.handleMessageChange = this.handleMessageChange.bind(this)
+    this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
   }
 
   componentDidMount() {
-    console.log("mounting");
     try {
       App.ChatChannel = App.cable.subscriptions.create(
         {
@@ -35,6 +37,15 @@ class ChatContainer extends Component {
     }
   }
 
+  handleMessageChange(event) {
+    this.setState({ my_message: event.target.value })
+  }
+
+  handleMessageSubmit(event) {
+    event.preventDefault()
+    console.log(this.state.my_message);
+  }
+
   render() {
     if (this.state.users.length == 0) {
       return(
@@ -44,11 +55,25 @@ class ChatContainer extends Component {
       )
     }
     else {
+      let backlog = this.state.messages.map((msg) => {
+        return(
+          <Message
+            body={msg.body}
+            author={msg.author}
+          />
+        )
+      })
+
       return(
         <div className="panel">
-          oof
+          <div className="messages">
+            {backlog}
+          </div>
           <ChatInput
-
+            user={this.state.my_user}
+            content={this.state.my_message}
+            onChange={this.handleMessageChange}
+            onSubmit={this.handleMessageSubmit}
           />
         </div>
       )
