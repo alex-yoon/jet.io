@@ -8,8 +8,6 @@ describe('LobbyTile', () => {
   let wrapper
 
   beforeEach(() => {
-    jasmineEnzyme()
-
     wrapper = mount(
       <LobbyTile
         lobbyId="1"

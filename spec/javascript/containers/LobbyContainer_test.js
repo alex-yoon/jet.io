@@ -7,18 +7,15 @@ import fetchMock from 'fetch-mock'
 
 describe('LobbyContainer', () => {
   let wrapper
-  let lobbies = {
-    lobbies: [
+  let lobbies = [
       { id: 1, name: 'Mobius', population: 3 },
       { id: 2, name: 'Blaze', population: 3 },
       { id: 3, name: 'Cipher', population: 2 },
       { id: 4, name: 'Trigger', population: 7 }
     ]
-  }
 
   beforeEach(() => {
-    jasmineEnzyme()
-    fetchMock.get('/api/v1/lobbies.json', {
+    fetchMock.get('/api/v1/lobbies', {
       status: 200,
       body: lobbies
     })
@@ -37,10 +34,8 @@ describe('LobbyContainer', () => {
 
     it("<LobbyTile>s have correct props", (done) => {
       setTimeout(() => {
-        let lobbiesWrapper = wrapper.find('LobbyTile')
-
-        lobbies['lobbies'].forEach((lobbyJson) => {
-          expect(lobbiesWrapper).toContainReact(
+        lobbies.forEach((lobbyJson) => {
+          expect(wrapper).toContainReact(
             <LobbyTile
               lobbyId={lobbyJson.id}
               name={lobbyJson.name}
@@ -48,6 +43,7 @@ describe('LobbyContainer', () => {
             />
           )
         })
+        done()
       }, 0)
     })
   })
