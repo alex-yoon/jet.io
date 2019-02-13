@@ -1,5 +1,5 @@
 import WelcomeContainer from "../../../app/javascript/react/containers/WelcomeContainer"
-import LobbyContainer from "../../../app/javascript/react/containers/LobbyContainer"
+import LobbyIndexContainer from "../../../app/javascript/react/containers/LobbyIndexContainer"
 import LobbyTile from "../../../app/javascript/react/components/LobbyTile"
 import React from 'react'
 import { mount } from 'enzyme'
@@ -25,7 +25,7 @@ describe('WelcomeContainer', () => {
     wrapper = mount(<WelcomeContainer />)
   })
 
-  it('renders a <LobbyContainer>', () => {
-    expect(wrapper.find('LobbyContainer')).toBePresent()
+  it('renders a <LobbyIndexContainer>', () => {
+    expect(wrapper.find('LobbyIndexContainer')).toBePresent()
   })
 })

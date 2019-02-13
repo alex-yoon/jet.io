@@ -1,0 +1,60 @@
+@import '_colors';
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.panel {
+  background-color: $white;
+  border-radius: 12px;
+
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes flash-fade {
+  0% {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    opacity: 1;
+  }
+  100% {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.flash {
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  animation-name: flash-fade;
+  animation-duration: 1.5s;
+  animation-delay: 3s;
+  animation-fill-mode: both;
+}
+
+.flash-alert {
+  background-color: $fair-pink;
+  color: $persimmon;
+  border: 1px $persimmon solid;
+}
+
+.flash-notice {
+  background-color: $magic-mint;
+  color: $forest-green;
+  border: 1px $forest-green solid;
+}
+
+.no-display {
+  display: none;
+}

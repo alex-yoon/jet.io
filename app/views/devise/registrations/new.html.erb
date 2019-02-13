@@ -7,6 +7,11 @@
         <%= devise_error_messages! %>
 
         <div class="field">
+          <%= f.label :name, "Username" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="field">
           <%= f.label :email %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
@@ -24,11 +29,25 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
+        <div class="field no-display">
+          <% def random_color %>
+            <% characters = *(0..9) %>
+            <% characters = characters + ['A', 'B', 'C', 'D', 'E', 'F'] %>
+            <% color_str = "" %>
+            <% 6.times do %>
+              <% color_str += characters.sample.to_s %>
+            <% end %>
+            <% return color_str %>
+          <% end %>
+          <%= f.text_field :color, value: random_color %>
+          <%# TODO: enable user to pick their color %>
+        </div>
+
         <div class="actions">
           <%= f.submit "Sign up" %>
         </div>
       <% end %>
-
+      <br>
       <%= render "devise/shared/links" %>
     </div>
   </div>

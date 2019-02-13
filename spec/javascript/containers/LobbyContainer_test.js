@@ -1,11 +1,11 @@
-import LobbyContainer from "../../../app/javascript/react/containers/LobbyContainer"
+import LobbyIndexContainer from "../../../app/javascript/react/containers/LobbyIndexContainer"
 import LobbyTile from "../../../app/javascript/react/components/LobbyTile"
 import React from 'react'
 import { mount } from 'enzyme'
 import jasmineEnzyme from 'jasmine-enzyme'
 import fetchMock from 'fetch-mock'
 
-describe('LobbyContainer', () => {
+describe('LobbyIndexContainer', () => {
   let wrapper
   let lobbies = [
       { id: 1, name: 'Mobius', population: 3 },
@@ -19,7 +19,7 @@ describe('LobbyContainer', () => {
       status: 200,
       body: lobbies
     })
-    wrapper = mount(<LobbyContainer />)
+    wrapper = mount(<LobbyIndexContainer />)
   })
 
   afterEach(fetchMock.restore)

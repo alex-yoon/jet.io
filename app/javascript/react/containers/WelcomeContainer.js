@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import LobbyContainer from './LobbyContainer'
+import LobbyIndexContainer from './LobbyIndexContainer'
 
 class WelcomeContainer extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class WelcomeContainer extends Component {
             A
           </div>
           <div className="small-12 medium-6 columns">
-            <LobbyContainer />
+            <LobbyIndexContainer />
           </div>
         </div>
       </div>
