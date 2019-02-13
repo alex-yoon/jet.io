@@ -1,8 +1,21 @@
 @import '_colors';
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes flash-notice {
+  from {
+    margin-top: 8; margin-bottom: 8;
+    padding-top: 8; padding-bottom: 8;
+    opacity: 1
+  }
+  to {
+    margin-top: 0; margin-bottom: 0;
+    padding-top: 0; padding-bottom: 0;
+    opacity: 0
+  }
 }
 
 .panel {
@@ -15,33 +28,9 @@
   animation-fill-mode: both;
 }
 
-@keyframes flash-fade {
-  0% {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    opacity: 1;
-  }
-  100% {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    opacity: 0;
-    display: none;
-  }
-}
-
 .flash {
-  margin-left: 8px;
-  margin-right: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
-  animation-name: flash-fade;
-  animation-duration: 1.5s;
-  animation-delay: 3s;
-  animation-fill-mode: both;
+  margin: 8px;
+  padding: 8px;
 }
 
 .flash-alert {
@@ -54,6 +43,11 @@
   background-color: $magic-mint;
   color: $forest-green;
   border: 1px $forest-green solid;
+
+  animation-name: flash-notice;
+  animation-duration: 1.5s;
+  animation-delay: 2.5s;
+  animation-fill-mode: both;
 }
 
 .no-display {
