@@ -18,7 +18,7 @@ class GameContainer extends Component {
           </div>
         </div>
         <div className="small-4 columns">
-          <ChatContainer />
+          <ChatContainer lobby_id={this.props.params.id} />
         </div>
       </div>
     )

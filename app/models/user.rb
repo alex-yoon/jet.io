@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..16 },
     format: {
-      with: /\A[A-Za-z0-9-\/\.\s]+\z/,
+      with: /\A[A-Za-z0-9\-\/\.\s]+\z/,
       message: "may only consist of alphanumeric characters"
     }
   validates :color, presence: true, length: { is: 6 }
