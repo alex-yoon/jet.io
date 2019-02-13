@@ -16,7 +16,6 @@ class LobbyContainer extends Component {
       .then((response) => response.json())
       .then((lobbyList) => {
         this.setState({ lobbies: lobbyList })
-        console.log(lobbyList);
       })
       .catch((e) => {
         console.error(`Failed to get list of lobbies: ${error.message}`)
@@ -26,18 +25,20 @@ class LobbyContainer extends Component {
 
   render() {
     let lobbyTiles = this.state.lobbies.map((lobby, index) => {
-      <div key={index}>
-        <LobbyTile
-          lobbyId={lobby.id}
-          name={lobby.name}
-          population={lobby.population}
-        />
-      </div>
+      return(
+        <div key={index}>
+          <LobbyTile
+            lobbyId={lobby.id}
+            name={lobby.name}
+            population={lobby.population}
+          />
+        </div>
+      )
     })
 
     return(
       <div className="panel">
-        <h1>Open Lobbies</h1>
+        <h4>Open Lobbies</h4>
         {lobbyTiles}
       </div>
     )

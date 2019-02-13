@@ -18,13 +18,10 @@ class WelcomeContainer extends Component {
     return(
       <div>
         <div className="row">
-          <div className="small-4 columns">
+          <div className="small-12 medium-6 columns">
             A
           </div>
-          <div className="small-4 columns">
-            B
-          </div>
-          <div className="small-4 columns">
+          <div className="small-12 medium-6 columns">
             <LobbyContainer />
           </div>
         </div>
