@@ -16,7 +16,7 @@ class WelcomeContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className="row-limiter">
         <div className="row">
           <div className="small-12 medium-6 columns">
             A

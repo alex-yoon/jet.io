@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ChatContainer from "./ChatContainer"
 
 class GameContainer extends Component {
   constructor(props) {
@@ -10,8 +11,17 @@ class GameContainer extends Component {
 
   render() {
     return(
-      <div className="panel small-12 columns">
-        Hi this is game number {this.props.params.id}
+      <div className="row">
+        <div className="small-3 columns">
+          <div className="panel">
+            oof
+          </div>
+        </div>
+        <div className="small-9 columns">
+          <div className="panel">
+            Hi this is game number {this.props.params.id}
+          </div>
+        </div>
       </div>
     )
   }
