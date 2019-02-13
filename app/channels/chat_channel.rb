@@ -1,6 +1,5 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    binding.pry
     stream_from "chat_#{params[:lobby_id]}"
   end
 
@@ -9,6 +8,5 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    binding.pry
   end
 end

@@ -11,7 +11,8 @@ class LobbyIndexContainer extends Component {
 
   componentDidMount() {
     fetch('/api/v1/lobbies', {
-      method: "GET"
+      method: "GET",
+      headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => response.json())
       .then((lobbyList) => {

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :lobbies, only: [:index] do
-        resources :messages, only: [:index]
+        resources :chat, controller: 'messages', only: [:index]
       end
     end
   end

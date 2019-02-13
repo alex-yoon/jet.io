@@ -5,7 +5,7 @@ const ChatInput = (props) => {
     <div className="chat-input">
       <form onSubmit={props.onSubmit}>
         <div>
-          <strong style={`color:${props.user.color}`}>{props.user.name}</strong>
+          <strong style={{color: props.user.color}}>{props.user.name}</strong>
         </div>
         <input
           name="body"
@@ -14,7 +14,7 @@ const ChatInput = (props) => {
           value={props.content}
         />
         <input
-          className="button"
+          className="button no-display"
           type="submit"
           value="Chat"
         />

@@ -16,6 +16,19 @@ class ChatContainer extends Component {
   }
 
   componentDidMount() {
+    fetch(`/api/v1/lobbies/${this.props.lobby_id}/chat`, {
+      method: "GET",
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => response.json())
+      .then((backlog) => {
+        console.log(backlog)
+        this.setState({ messages: backlog })
+      })
+      .catch((error) => {
+        console.error(`Failed to get message history: ${error.message}`)
+      })
+
     try {
       App.ChatChannel = App.cable.subscriptions.create(
         {
@@ -35,6 +48,7 @@ class ChatContainer extends Component {
     catch (error) {
       console.error(`Failed to connect to chat channel: ${error.message}`)
     }
+
   }
 
   handleMessageChange(event) {
@@ -47,7 +61,7 @@ class ChatContainer extends Component {
   }
 
   render() {
-    if (this.state.users.length == 0) {
+    if (this.state.messages.length == 0) {
       return(
         <div className="panel">
           Loading...
@@ -55,19 +69,21 @@ class ChatContainer extends Component {
       )
     }
     else {
-      let backlog = this.state.messages.map((msg) => {
+      let messages = this.state.messages.map((msg, index) => {
         return(
-          <Message
-            body={msg.body}
-            author={msg.author}
-          />
+          <div key={index}>
+            <Message
+              body={msg.body}
+              author={msg.author}
+            />
+          </div>
         )
       })
 
       return(
         <div className="panel">
           <div className="messages">
-            {backlog}
+            {messages}
           </div>
           <ChatInput
             user={this.state.my_user}

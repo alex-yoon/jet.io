@@ -1,1 +1,11 @@
 @import '_colors';
+
+.messages {
+  background-color: $foam;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.message {
+  margin-bottom: 2px;
+}
