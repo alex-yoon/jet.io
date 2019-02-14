@@ -18,6 +18,7 @@ class ChatContainer extends Component {
     this.handleMessageChange = this.handleMessageChange.bind(this)
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
     this.handleMessageReceipt = this.handleMessageReceipt.bind(this)
+    this.scrollToBottom = this.scrollToBottom.bind(this)
   }
 
   componentDidMount() {
@@ -37,6 +38,7 @@ class ChatContainer extends Component {
       this.setState({ messages: messages })
     })
     .then(() => {
+      this.scrollToBottom()
       this.initiateWebSocket()
     })
     .catch((error) => {
@@ -131,11 +133,18 @@ class ChatContainer extends Component {
     let newMessages = this.state.messages
     newMessages.push(data)
     this.setState({ messages: newMessages })
+    this.scrollToBottom()
+  }
+
+  scrollToBottom(smoothly) {
+    if (this.el) {
+      this.el.scrollIntoView()
+    }
   }
 
   render() {
     let chatBox
-    if (this.state.error != null) {
+    if (this.state.error) {
       chatBox = this.state.error
     }
     else if (this.state.messages.length == 0) {
@@ -149,7 +158,10 @@ class ChatContainer extends Component {
       })
       chatBox = (
         <div>
-          <div className="messages">{messages}</div>
+          <div className="messages">
+            {messages}
+            <div ref={el => { this.el = el; }}></div>
+          </div>
           <ChatInput
             content={this.state.my_message}
             onChange={this.handleMessageChange}
