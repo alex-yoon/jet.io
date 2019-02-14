@@ -15,8 +15,8 @@ class LobbyIndexContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => response.json())
-      .then((lobbyList) => {
-        this.setState({ lobbies: lobbyList })
+      .then((json) => {
+        this.setState({ lobbies: json['lobbies'] })
       })
       .catch((error) => {
         console.error(`Failed to get list of lobbies: ${error.message}`)

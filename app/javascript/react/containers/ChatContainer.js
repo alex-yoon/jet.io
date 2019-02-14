@@ -35,8 +35,8 @@ class ChatContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     })
     .then((response) => response.json())
-    .then((user) => {
-      this.setState({ my_user: user })
+    .then((json) => {
+      console.log(json);
     })
     .catch((error) => {
       console.error(`Failed to retrieve current user data: ${error.message}`)
@@ -57,8 +57,8 @@ class ChatContainer extends Component {
           throw new Error("User is not logged in")
         }
       })
-      .then((messages) => {
-        resolve(messages)
+      .then((json) => {
+        resolve(json['messages'])
       })
       .catch((error) => {
         if (error.message == "User is not logged in") {
