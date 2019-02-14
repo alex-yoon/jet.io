@@ -128,8 +128,9 @@ class ChatContainer extends Component {
   }
 
   handleMessageReceipt(data) {
-    console.log("Incoming data:")
-    console.log(data);
+    let newMessages = this.state.messages
+    newMessages.push(data)
+    this.setState({ messages: newMessages })
   }
 
   render() {

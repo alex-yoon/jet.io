@@ -13,5 +13,16 @@ class ChatChannel < ApplicationCable::Channel
       user: current_user,
       lobby_id: params['lobby_id']
     })
+
+    message_json = {
+      body: new_message.body,
+      author: {
+        name: current_user.name,
+        color: current_user.color
+      }
+    }
+
+    channel_name = "chat_#{params['lobby_id']}"
+    ActionCable.server.broadcast(channel_name, message_json)
   end
 end
