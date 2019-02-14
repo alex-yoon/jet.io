@@ -1,4 +1,5 @@
 @import '_colors';
+@import 'layout';
 
 .chat-box h1 {
   font-size: 1.4em;
@@ -17,24 +18,25 @@
 }
 
 .messages {
-  padding: 8px;
   margin-bottom: 16px;
+  border: 1px $sail dotted;
 
-  max-height: 300px;
+  max-height: 66vh;
   overflow: scroll;
 }
 
 .message {
-  margin-bottom: 4px;
+  padding: 2px 8px;
+  margin: 0;
   font-size: 0.9em;
   line-height: 1.25em;
 }
 
-.message .odd {
+.message.odd {
   background-color: $foam;
 }
 
-.message .even {
+.message.even {
   background-color: $white;
 }
 

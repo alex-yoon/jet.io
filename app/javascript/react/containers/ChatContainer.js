@@ -144,9 +144,7 @@ class ChatContainer extends Component {
     else {
       let messages = this.state.messages.map((msg, index) => {
         return(
-          <div key={index}>
-            <Message body={msg.body} author={msg.author} />
-          </div>
+          <Message key={index} id={index} body={msg.body} author={msg.author} />
         )
       })
       chatBox = (
