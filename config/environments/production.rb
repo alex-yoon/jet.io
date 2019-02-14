@@ -93,4 +93,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Set WebSocket cable server's URI for production.
+  config.web_socket_server_url = "wss://#{ENV["ROOT_URL"]}/cable"
+
+  # Pass allowed WebSocket request origins to ActionCable server config.
+  config.action_cable.allowed_request_origins = [
+    "https://#{ENV['ROOT_URL']}",
+    "http://#{ENV['ROOT_URL']}"
+  ]
 end
