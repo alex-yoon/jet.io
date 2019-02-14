@@ -1,21 +1,43 @@
 @import '_colors';
 
 .lobby-tile {
-  padding: 12px 24px;
+  padding: 6px 20px;
   margin: 8px;
   border-radius: 8px;
   background-color: $sail;
-  color: $emperor;
+  color: $mine-shaft;
+  border: 2px $viking solid;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lobby-tile:hover {
+  background-color: $boston-blue;
+  border-color: $boston-blue;
+  color: $white;
+}
+
+.lobby-tile p {
+  margin-bottom: 0;
+  margin-right: 12px;
+  color: inherit;
 }
 
 .lobby-status {
   font-weight: bold;
-  font-size: 2rem;
-  color: $forest-green;
+  font-size: 2em;
 }
 
 .lobby-name {
   font-weight: bold;
+  font-size: 1.2em;
+}
+
+.lobby-pop {
+  margin-left: auto;
+  margin-top: 4px;
 }
 
 .join-lobby-button {

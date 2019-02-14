@@ -22,16 +22,6 @@ describe('LobbyTile', () => {
   })
 
   it("renders lobby population", () => {
-    expect(wrapper).toIncludeText('4')
-  })
-
-  describe("renders a <LinkButton>", () => {
-    it("<LinkButton> exists", () => {
-      expect(wrapper.find('LinkButton')).toBePresent()
-    })
-
-    it("links to the game instance with matching id", () => {
-      expect(wrapper.find('LinkButton').prop('to')).toBe('/game/1')
-    })
+    expect(wrapper).toIncludeText('4 player(s)')
   })
 })

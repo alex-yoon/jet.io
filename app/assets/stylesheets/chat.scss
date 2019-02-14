@@ -1,0 +1,48 @@
+@import '_colors';
+@import 'layout';
+
+.chat-box h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.chat-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chat-input input {
+  display: flex;
+  margin: 0px 8px;
+}
+
+.messages {
+  margin-bottom: 16px;
+  border: 1px $sail dotted;
+  background-color: $white;
+
+  min-height: 33vh;
+  max-height: 67vh;
+  overflow: scroll;
+}
+
+.message {
+  padding: 2px 8px;
+  margin: 0;
+  font-size: 0.9em;
+  font-family: 'Gudea', sans-serif;
+  line-height: 1.25em;
+}
+
+.message.odd {
+  background-color: $foam;
+}
+
+.message.even {
+  background-color: $white;
+}
+
+#chat-button {
+  padding: 10px;
+}
