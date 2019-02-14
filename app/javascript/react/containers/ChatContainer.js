@@ -17,6 +17,7 @@ class ChatContainer extends Component {
     this.initiateWebSocket = this.initiateWebSocket.bind(this)
     this.handleMessageChange = this.handleMessageChange.bind(this)
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
+    this.handleMessageReceipt = this.handleMessageReceipt.bind(this)
   }
 
   componentDidMount() {
@@ -34,6 +35,9 @@ class ChatContainer extends Component {
     })
     .then((messages) => {
       this.setState({ messages: messages })
+    })
+    .then(() => {
+      this.initiateWebSocket()
     })
     .catch((error) => {
       console.error(`Could not load chat: ${error.message}`)
@@ -99,10 +103,7 @@ class ChatContainer extends Component {
         {
           connected: () => console.log(`Connected to chat at lobby ${this.props.lobby_id}`),
           disconnected: () => console.log("Disconnected from chat"),
-          received: (data) => {
-            console.log("Incoming data:");
-            console.log(data);
-          }
+          received: this.handleMessageReceipt
         }
       )
     }
@@ -123,6 +124,11 @@ class ChatContainer extends Component {
       }
     }
     App.ChatChannel.send(payload)
+  }
+
+  handleMessageReceipt(data) {
+    console.log("Incoming data:")
+    console.log(data);
   }
 
   render() {
