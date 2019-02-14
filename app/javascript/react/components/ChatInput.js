@@ -3,7 +3,7 @@ import React from 'react';
 const ChatInput = (props) => {
   return(
     <div>
-      <form onSubmit={props.onSubmit}>
+      <form autoComplete="off" onSubmit={props.onSubmit}>
         <div className="chat-input">
           <input
             name="body"
