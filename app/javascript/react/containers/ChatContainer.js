@@ -108,37 +108,24 @@ class ChatContainer extends Component {
   }
 
   render() {
+    let chatBox
     if (this.state.error != null) {
-      return(
-        <div className="panel">
-          {this.state.error}
-        </div>
-      )
+      chatBox = this.state.error
     }
     else if (this.state.messages.length == 0) {
-      return(
-        <div className="panel">
-          Loading...
-        </div>
-      )
+      chatBox = "Loading..."
     }
     else {
       let messages = this.state.messages.map((msg, index) => {
         return(
           <div key={index}>
-            <Message
-              body={msg.body}
-              author={msg.author}
-            />
+            <Message body={msg.body} author={msg.author} />
           </div>
         )
       })
-
-      return(
-        <div className="panel">
-          <div className="messages">
-            {messages}
-          </div>
+      chatBox = (
+        <div>
+          <div className="messages">{messages}</div>
           <ChatInput
             content={this.state.my_message}
             onChange={this.handleMessageChange}
@@ -147,6 +134,13 @@ class ChatContainer extends Component {
         </div>
       )
     }
+
+    return(
+      <div className="panel chat-box">
+        <h1>Chat</h1>
+        {chatBox}
+      </div>
+    )
   }
 }
 

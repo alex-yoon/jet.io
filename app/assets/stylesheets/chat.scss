@@ -1,5 +1,10 @@
 @import '_colors';
 
+.chat-box h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
 .chat-input {
   display: flex;
   flex-direction: row;
