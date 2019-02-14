@@ -124,6 +124,7 @@ class ChatContainer extends Component {
       }
     }
     App.ChatChannel.send(payload)
+    this.setState({ my_message: "" })
   }
 
   handleMessageReceipt(data) {

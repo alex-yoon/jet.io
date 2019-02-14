@@ -17,13 +17,25 @@
 }
 
 .messages {
-  background-color: $foam;
   padding: 8px;
   margin-bottom: 16px;
+
+  max-height: 300px;
+  overflow: scroll;
 }
 
 .message {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  font-size: 0.9em;
+  line-height: 1.25em;
+}
+
+.message .odd {
+  background-color: $foam;
+}
+
+.message .even {
+  background-color: $white;
 }
 
 #chat-button {
