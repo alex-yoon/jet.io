@@ -20,26 +20,44 @@ class ChatContainer extends Component {
   }
 
   componentDidMount() {
-    this.fetchMessageHistory()
+    this.fetchCurrentUser()
+    .then((user) => {
+      if (user.name == undefined) {
+        throw new Error("User is not logged in")
+      }
+      else {
+        this.setState({ my_user: user })
+      }
+    })
+    .then(() => {
+      return this.fetchMessageHistory()
+    })
     .then((messages) => {
-      this.setState({messages: messages})
+      this.setState({ messages: messages })
     })
     .catch((error) => {
-      console.error(error.message)
+      console.error(`Could not load chat: ${error.message}`)
+      if (error.message == "User is not logged in") {
+        this.setState({
+          error: <p><a href="/users/sign_up">Sign up</a> or <a href="/users/sign_in">log in</a> to access chat</p>
+        })
+      }
     })
   }
 
   fetchCurrentUser() {
-    fetch(`/api/v1/users/current`, {
-      method: "GET",
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-    })
-    .catch((error) => {
-      console.error(`Failed to retrieve current user data: ${error.message}`)
+    return new Promise((resolve, reject) => {
+      fetch(`/api/v1/users/current`, {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        resolve(json['user'])
+      })
+      .catch((error) => {
+        reject(Error(`Failed to retrieve current user data: ${error.message}`))
+      })
     })
   }
 
