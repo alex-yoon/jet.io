@@ -22,11 +22,23 @@ class ChatContainer extends Component {
     })
       .then((response) => response.json())
       .then((backlog) => {
-        console.log(backlog)
         this.setState({ messages: backlog })
       })
       .catch((error) => {
         console.error(`Failed to get message history: ${error.message}`)
+      })
+
+    fetch(`/api/v1/users/current`, {
+      method: "GET",
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => response.json())
+      .then((user) => {
+        console.log(user);
+        this.setState({ my_user: user })
+      })
+      .catch((error) => {
+        console.error(`Failed to retrieve current user data: ${error.message}`)
       })
 
     try {
@@ -57,7 +69,13 @@ class ChatContainer extends Component {
 
   handleMessageSubmit(event) {
     event.preventDefault()
-    console.log(this.state.my_message);
+    let payload = {
+      message: {
+        body: this.state.my_message,
+        author: this.state.my_user
+      }
+    }
+    App.ChatChannel.send(payload)
   }
 
   render() {
