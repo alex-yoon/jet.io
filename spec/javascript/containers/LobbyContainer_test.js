@@ -7,17 +7,19 @@ import fetchMock from 'fetch-mock'
 
 describe('LobbyIndexContainer', () => {
   let wrapper
-  let lobbies = [
-      { id: 1, name: 'Mobius', population: 3 },
-      { id: 2, name: 'Blaze', population: 3 },
-      { id: 3, name: 'Cipher', population: 2 },
-      { id: 4, name: 'Trigger', population: 7 }
-    ]
+  let mockResponse = {
+    lobbies: [
+        { id: 1, name: 'Mobius', population: 3 },
+        { id: 2, name: 'Blaze', population: 3 },
+        { id: 3, name: 'Cipher', population: 2 },
+        { id: 4, name: 'Trigger', population: 7 }
+      ]
+  }
 
   beforeEach(() => {
     fetchMock.get('/api/v1/lobbies', {
       status: 200,
-      body: lobbies
+      body: mockResponse
     })
     wrapper = mount(<LobbyIndexContainer />)
   })
@@ -34,7 +36,7 @@ describe('LobbyIndexContainer', () => {
 
     it("<LobbyTile>s have correct props", (done) => {
       setTimeout(() => {
-        lobbies.forEach((lobbyJson) => {
+        mockResponse['lobbies'].forEach((lobbyJson) => {
           expect(wrapper).toContainReact(
             <LobbyTile
               lobbyId={lobbyJson.id}
