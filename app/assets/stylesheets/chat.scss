@@ -20,8 +20,10 @@
 .messages {
   margin-bottom: 16px;
   border: 1px $sail dotted;
+  background-color: $white;
 
-  max-height: 66vh;
+  min-height: 33vh;
+  max-height: 67vh;
   overflow: scroll;
 }
 
