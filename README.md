@@ -20,7 +20,7 @@ yarn run test
 ```
 
 ## Deploying to Heroku
-* Make sure you have the (Heroku CLI)[https://devcenter.heroku.com/articles/heroku-cli] installed and are logged in.
+* Make sure you have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed and are logged in.
 * After creating the app on Heroku, you will need to add the add-ons for Postgres and Redis for database and WebSocket functionality.
 ```
 heroku addons:add heroku-postgresql -a app-name
