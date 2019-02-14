@@ -7,7 +7,7 @@ class ChatContainer extends Component {
     super(props);
     this.state = {
       users: [],
-      messages: [],
+      messages: null,
       my_user: {},
       my_message: "",
       error: null
@@ -147,7 +147,7 @@ class ChatContainer extends Component {
     if (this.state.error) {
       chatBox = this.state.error
     }
-    else if (this.state.messages.length == 0) {
+    else if (!(this.state.messages)) {
       chatBox = "Loading..."
     }
     else {
