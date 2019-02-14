@@ -25,8 +25,11 @@ yarn run test
 heroku addons:add heroku-postgresql -a app-name
 heroku addons:add redistogo -a app-name
 ```
-* In production, the `ROOT_URL` environment variable sets the cable server's URI. Also, ActionCable will only accept WebSocket requests from origins matching `ROOT_URL`.
+* Environment variables for production
+* The `ROOT_URL` environment variable sets the cable server's URI. Also, ActionCable will only accept WebSocket requests from origins matching `ROOT_URL`.
 ```
+heroku config:set RAILS_ENV="production" -a app-name
+heroku config:set RACK_ENV="production" -a app-name
 heroku config:set ROOT_URL="app-name.herokuapp.com" -a app-name
 ```
 * Because this app uses Bundler 2 and Heroku uses Bundler 1.15 by default, we need to explicitly set the buildpack (below).
