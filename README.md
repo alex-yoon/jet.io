@@ -41,12 +41,11 @@ heroku buildpacks set https://github.com/bundler/heroku-buildpack-bundler2 -a ap
 ```
 * Database setup
 ```
-heroku run bundle exec rails db:create -a app-name
 heroku run bundle exec rails db:schema:load -a app-name
-# optional
+# optional:
 heroku run bundle exec rails db:seed -a app-name
 ```
-* Finally, create the release with `git push heroku master`.
+* Finally, deploy from Github or `git push heroku master`.
 ---
 ### Gameplay
 
